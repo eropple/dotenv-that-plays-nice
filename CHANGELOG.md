@@ -2,9 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [8.1.0](https://github.com/eropple/dotenv-that-plays-nice/compare/v8.0.0...v8.1.0)
+# [8.1.1](https://github.com/eropple/dotenv-that-plays-nice/compare/v8.0.0...v8.1.1)
 
 - Added support for optional `export` prepending to entries in `.env`.
+- (There is no public `v8.1.0`; packaging snafu.)
 
 ## [8.0.0](https://github.com/motdotla/dotenv/compare/v7.0.0...v8.0.0) (2019-05-02)
 
