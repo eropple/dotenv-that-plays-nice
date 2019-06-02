@@ -23,3 +23,5 @@ We use [standard](https://www.npmjs.com/package/standard) and [editorconfig](htt
 ```
 npm run lint
 ```
+
+(Disclaimer: I think "standard" has a certain amount of craniorectal insertion to it, but I'm not trying to reinvent every wheel for this project. Bad consistency is better than inconsistency, at least in this case.)

@@ -1,25 +1,23 @@
-# dotenv
+# dotenv-that-plays-nice
 
-<img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png" alt="dotenv" align="right" />
+`dotenv-that-plays-nice` is a zero-dependency module that loads environment variables from a `.env` file into [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env). Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology.
 
-Dotenv is a zero-dependency module that loads environment variables from a `.env` file into [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env). Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology.
+But, since `dotenv-that-plays-nice` was written, the rest of the world has adopted similar and done it one better. Most `dotenv-that-plays-nice` implementations understand that environment variables are largely the province of shell scripts and things that shell scripts call, and so they ignore shell-style comments (`# foo`) and correctly handle variable assignations prepended with `export`. The `dotenv-that-plays-nice` folks seem oddly resistant to this, claiming that `.env` is an "INI file". And given that they delete-on-sight polite "please reconsider so you aren't surprising and wasting folks' time", I guess it's probably best forked. So, here we go: `dotenv-that-plays-nice`.
 
-[![BuildStatus](https://img.shields.io/travis/motdotla/dotenv/master.svg?style=flat-square)](https://travis-ci.org/motdotla/dotenv)
-[![Build status](https://ci.appveyor.com/api/projects/status/github/motdotla/dotenv?svg=true)](https://ci.appveyor.com/project/motdotla/dotenv/branch/master)
-[![NPM version](https://img.shields.io/npm/v/dotenv.svg?style=flat-square)](https://www.npmjs.com/package/dotenv)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
-[![Coverage Status](https://img.shields.io/coveralls/motdotla/dotenv/master.svg?style=flat-square)](https://coveralls.io/github/motdotla/dotenv?branch=coverall-intergration)
-[![LICENSE](https://img.shields.io/github/license/motdotla/dotenv.svg)](LICENSE)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+(I don't really have any illusions that this is going to take over the world, but I want it for me.)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/github/motdotla/dotenv?svg=true)](https://ci.appveyor.com/project//branch/master)
+[![NPM version](https://img.shields.io/npm/v/dotenv-that-plays-nice.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-that-plays-nice)
+[![LICENSE](https://img.shields.io/github/license/eropple/dotenv-that-plays-nice.svg)](LICENSE)
 
 ## Install
 
 ```bash
 # with npm
-npm install dotenv
+npm install dotenv-that-plays-nice
 
 # or with Yarn
-yarn add dotenv
+yarn add dotenv-that-plays-nice
 ```
 
 ## Usage
@@ -27,7 +25,7 @@ yarn add dotenv
 As early as possible in your application, require and configure dotenv.
 
 ```javascript
-require('dotenv').config()
+require('dotenv-that-plays-nice').config()
 ```
 
 Create a `.env` file in the root directory of your project. Add
@@ -56,23 +54,23 @@ db.connect({
 You can use the `--require` (`-r`) [command line option](https://nodejs.org/api/cli.html#cli_r_require_module) to preload dotenv. By doing this, you do not need to require and load dotenv in your application code. This is the preferred approach when using `import` instead of `require`.
 
 ```bash
-$ node -r dotenv/config your_script.js
+$ node -r dotenv-that-plays-nice/config your_script.js
 ```
 
 The configuration options below are supported as command line arguments in the format `dotenv_config_<option>=value`
 
 ```bash
-$ node -r dotenv/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
+$ node -r dotenv-that-plays-nice/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
 ```
 
 Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
 
 ```bash
-$ DOTENV_CONFIG_<OPTION>=value node -r dotenv/config your_script.js
+$ DOTENV_CONFIG_<OPTION>=value node -r dotenv-that-plays-nice/config your_script.js
 ```
 
 ```bash
-$ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv/config your_script.js dotenv_config_path=/custom/path/to/.env
+$ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-that-plays-nice/config your_script.js dotenv_config_path=/custom/path/to/.env
 ```
 
 ## Config
@@ -102,7 +100,7 @@ Default: `path.resolve(process.cwd(), '.env')`
 You may specify a custom path if your file containing environment variables is located elsewhere.
 
 ```js
-require('dotenv').config({ path: '/full/custom/path/to/your/env/vars' })
+require('dotenv-that-plays-nice').config({ path: '/full/custom/path/to/your/env/vars' })
 ```
 
 #### Encoding
@@ -112,7 +110,7 @@ Default: `utf8`
 You may specify the encoding of your file containing environment variables.
 
 ```js
-require('dotenv').config({ encoding: 'latin1' })
+require('dotenv-that-plays-nice').config({ encoding: 'latin1' })
 ```
 
 #### Debug
@@ -122,7 +120,7 @@ Default: `false`
 You may turn on logging to help debug why certain keys or values are not being set as you expect.
 
 ```js
-require('dotenv').config({ debug: process.env.DEBUG })
+require('dotenv-that-plays-nice').config({ debug: process.env.DEBUG })
 ```
 
 ## Parse
@@ -132,7 +130,7 @@ variables is available to use. It accepts a String or Buffer and will return
 an Object with the parsed keys and values.
 
 ```js
-const dotenv = require('dotenv')
+const dotenv = require('dotenv-that-plays-nice')
 const buf = Buffer.from('BASIC=basic')
 const config = dotenv.parse(buf) // will return an object
 console.log(typeof config, config) // object { BASIC : 'basic' }
@@ -147,7 +145,7 @@ Default: `false`
 You may turn on logging to help debug why certain keys or values are not being set as you expect.
 
 ```js
-const dotenv = require('dotenv')
+const dotenv = require('dotenv-that-plays-nice')
 const buf = Buffer.from('hello world')
 const opt = { debug: true }
 const config = dotenv.parse(buf, opt)
@@ -160,7 +158,6 @@ The parsing engine currently supports the following rules:
 
 - `BASIC=basic` becomes `{BASIC: 'basic'}`
 - empty lines are skipped
-- lines beginning with `#` are treated as comments
 - empty values become empty strings (`EMPTY=` becomes `{EMPTY: ''}`)
 - inner quotes are maintained (think JSON) (`JSON={"foo": "bar"}` becomes `{JSON:"{\"foo\": \"bar\"}"`)
 - whitespace is removed from both ends of unquoted values (see more on [`trim`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)) (`FOO=  some value  ` becomes `{FOO: 'some value'}`)
@@ -172,6 +169,8 @@ The parsing engine currently supports the following rules:
 {MULTILINE: 'new
 line'}
 ```
+- (new to `dotenv-that-plays-nice`): lines beginning with `#` are treated as comments instead of turning into debug barf
+- (new to `dotenv-that-plays-nice`): lines beginning with `export` are parsed as if the `export` wasn't there
 
 ## FAQ
 
@@ -198,7 +197,7 @@ If you want to override `process.env` you can do something like this:
 
 ```javascript
 const fs = require('fs')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv-that-plays-nice')
 const envConfig = dotenv.parse(fs.readFileSync('.env.override'))
 for (let k in envConfig) {
   process.env[k] = envConfig[k]
@@ -212,15 +211,11 @@ the parsed `.env` file. This gives you everything you need to continue
 setting values on `process.env`. For example:
 
 ```js
-const dotenv = require('dotenv')
+const dotenv = require('dotenv-that-plays-nice')
 const variableExpansion = require('dotenv-expand')
 const myEnv = dotenv.config()
 variableExpansion(myEnv)
 ```
-
-### What about variable expansion?
-
-Try [dotenv-expand](https://github.com/motdotla/dotenv-expand)
 
 ### How do I use dotenv with `import`?
 
@@ -243,7 +238,7 @@ export const client = new Client(process.env.BEST_API_KEY)
 `index.js`:
 
 ```js
-import dotenv from 'dotenv'
+import dotenv from 'dotenv-that-plays-nice'
 import errorReporter from './errorReporter'
 
 dotenv.config()
@@ -252,9 +247,9 @@ errorReporter.client.report(new Error('faq example'))
 
 `client` will not be configured correctly because it was constructed before `dotenv.config()` was executed. There are (at least) 3 ways to make this work.
 
-1. Preload dotenv: `node --require dotenv/config index.js` (_Note: you do not need to `import` dotenv with this approach_)
-2. Import `dotenv/config` instead of `dotenv` (_Note: you do not need to call `dotenv.config()` and must pass options via the command line or environment variables with this approach_)
-3. Create a separate file that will execute `config` first as outlined in [this comment on #133](https://github.com/motdotla/dotenv/issues/133#issuecomment-255298822)
+1. Preload dotenv: `node --require dotenv-that-plays-nice/config index.js` (_Note: you do not need to `import` dotenv with this approach_)
+2. Import `dotenv-that-plays-nice/config` instead of `dotenv-that-plays-nice` (_Note: you do not need to call `dotenv.config()` and must pass options via the command line or environment variables with this approach_)
+3. Create a separate file that will execute `config` first as outlined in [this comment on #133](https://github.com/motdotla/dotenv-that-plays-nice/issues/133#issuecomment-255298822)
 
 ## Contributing Guide
 
@@ -263,9 +258,3 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ## Change Log
 
 See [CHANGELOG.md](CHANGELOG.md)
-
-## Who's using dotenv?
-
-[These npm modules depend on it.](https://www.npmjs.com/browse/depended/dotenv)
-
-Projects that expand it often use the [keyword "dotenv" on npm](https://www.npmjs.com/search?q=keywords:dotenv).

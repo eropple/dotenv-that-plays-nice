@@ -1,7 +1,7 @@
 {
-  "name": "dotenv",
-  "version": "8.0.0",
-  "description": "Loads environment variables from .env file",
+  "name": "dotenv-that-plays-nice",
+  "version": "8.1.0-wip",
+  "description": "Loads environment variables from .env file, while playing nicely with other dotenv implementations in other languages.",
   "main": "lib/main.js",
   "scripts": {
     "flow": "flow",
