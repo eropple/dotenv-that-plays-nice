@@ -2,11 +2,10 @@
 
 `dotenv-that-plays-nice` is a zero-dependency module that loads environment variables from a `.env` file into [`process.env`](https://nodejs.org/docs/latest/api/process.html#process_process_env). Storing configuration in the environment separate from code is based on [The Twelve-Factor App](http://12factor.net/config) methodology.
 
-But, since [the original `dotenv`](https://github.com/motdotla/dotenv) was written, the rest of the world has adopted similar and done it one better. Most `dotenv` implementations understand that environment variables are largely the province of shell scripts and things that shell scripts call, and so they ignore shell-style comments (`# foo`) and correctly handle variable assignations prepended with `export`. The `dotenv` folks seem oddly resistant to this, claiming that `.env` is an "INI file". And given that they delete-on-sight polite "please reconsider so you aren't surprising and wasting folks' time", I guess it's probably best forked. So, here we go: `dotenv-that-plays-nice`.
+This module is based on [the original `dotenv`](https://github.com/motdotla/dotenv) module. Since that module was written, however, the rest of the world has adopted similar and done it one better. Most `dotenv` implementations understand that environment variables are largely the province of shell scripts and things that shell scripts call, and so they ignore shell-style comments (`# foo`) and correctly handle variable assignations prepended with `export`. The `dotenv` folks seem oddly resistant to this, claiming that `.env` is an "INI file". And given that they delete-on-sight polite "please reconsider so you aren't surprising and wasting folks' time", I guess it's probably best forked. So, here we go: `dotenv-that-plays-nice`.
 
 (I don't really have any illusions that this is going to take over the world, but I want it for me.)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/motdotla/dotenv?svg=true)](https://ci.appveyor.com/project//branch/master)
 [![NPM version](https://img.shields.io/npm/v/dotenv-that-plays-nice.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-that-plays-nice)
 [![LICENSE](https://img.shields.io/github/license/eropple/dotenv-that-plays-nice.svg)](LICENSE)
 
@@ -249,7 +248,7 @@ errorReporter.client.report(new Error('faq example'))
 
 1. Preload dotenv: `node --require dotenv-that-plays-nice/config index.js` (_Note: you do not need to `import` dotenv with this approach_)
 2. Import `dotenv-that-plays-nice/config` instead of `dotenv-that-plays-nice` (_Note: you do not need to call `dotenv.config()` and must pass options via the command line or environment variables with this approach_)
-3. Create a separate file that will execute `config` first as outlined in [this comment on #133](https://github.com/motdotla/dotenv-that-plays-nice/issues/133#issuecomment-255298822)
+3. Create a separate file that will execute `config` first as outlined in [this comment on the parent project's #133](https://github.com/motdotla/dotenv-that-plays-nice/issues/133#issuecomment-255298822)
 
 ## Contributing Guide
 
